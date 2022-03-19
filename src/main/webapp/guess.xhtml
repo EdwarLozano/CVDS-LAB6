@@ -9,27 +9,49 @@ and open the template in the editor.
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:p="http://primefaces.org/ui">
+    <style>
+        body {
+            background-color: rgb(255, 211, 117);
+            color: white;
+            text-align: center;
+            font-family: 'Trebuchet MS', Courier, monospace;
+        }
+
+        .numero{
+            visibility: hidden;
+        }
+
+        .button{
+            border-radius: 15px;
+            width: 125px;
+            height: 30px;
+            margin-top: 10px;
+            font-size: 15px;
+        }
+
+    </style>
 
     <h:body>
-        <h1>Juego adivinanza</h1>
+        <h1>Juego Adivinanza</h1>
         <h:form id="guess_form">
-            <label ><h1>Ingrese numero entre 1 y 20</h1></label><br/>
+            <label ><h1 style="color:white;font-size:15px;">Ingrese numero entre 1 y 20</h1></label><br/>
             <p:inputText id="num" size="20" placeholder="Numero entre 1 y 20" value="#{guessBean.guess}" required="true"></p:inputText>
-            <br/>
-            <p:commandButton value="Enviar" update="guess_form" actionListener="#{guessBean.main()}"></p:commandButton>
+            <br></br>
+            <p:commandButton class = "button" value="Enviar" update="guess_form" actionListener="#{guessBean.main()}"></p:commandButton>
+            <br></br>
             <p><b>Premio Actual</b></p>
             <p:outputLabel value="#{guessBean.getPrize()}" ></p:outputLabel>
             <br/>
             <p><b>Intentos</b></p>
             <p:outputLabel value="#{guessBean.getAttemps()}" ></p:outputLabel>
             <br/>
-            <p><b>Numero</b></p>
-            <p:outputLabel value="#{guessBean.getNumber()}" ></p:outputLabel>
+            <p hidden = "Numero"><b>Numero</b></p>
+            <p:outputLabel class = "numero" value="#{guessBean.getNumber()}" ></p:outputLabel>
             <br/>
             <p><b>Estado de juego</b></p>
             <p:outputLabel value="#{guessBean.getState()}" ></p:outputLabel>
             <br/>
-            <p:commandButton value="Reset" update="guess_form" actionListener="#{guessBean.reset()}"></p:commandButton>
+            <p:commandButton class = "button" value="Reset" update="guess_form" actionListener="#{guessBean.reset()}"></p:commandButton>
         </h:form>
     </h:body>
     
